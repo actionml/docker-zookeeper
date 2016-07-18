@@ -1,0 +1,5 @@
+[template]
+src = "myid.tmpl"
+dest = "/data/myid"
+owner = "root"
+mode = "0644"

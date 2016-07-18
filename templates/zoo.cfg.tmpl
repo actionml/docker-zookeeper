@@ -1,0 +1,11 @@
+tickTime={{getenv "ZK_TICK_TIME"}}
+initLimit={{getenv "ZK_INIT_LIMIT"}}
+syncLimit={{getenv "ZK_SYNC_LIMIT"}}
+dataDir=/data
+clientPort=2181
+maxClientCnxns={{getenv "ZK_MAX_CLIENT_CXNS"}}
+autopurge.snapRetainCount=3
+autopurge.purgeInterval=1
+{{range $index, $host := split (getenv ("ZK_ENSEMBLE_HOSTS")) "," -}}
+{{if $index}}server.{{$index}}={{$host}}:2888:3888{{end}}
+{{end}}
