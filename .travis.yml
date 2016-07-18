@@ -16,7 +16,7 @@ before_script:
 script:
   - docker build -t $NAMESPACE/$PROJECT:$tag .
   # - docker tag $NAMESPACE/$PROJECT:$tag $NAMESPACE/$PROJECT:latest
-  - ~/official-images/test/run.sh $NAMESPACE/$PROJECT:$tag
+  # - ~/official-images/test/run.sh $NAMESPACE/$PROJECT:$tag
 
 after_script:
   - docker images
