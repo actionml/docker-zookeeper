@@ -12,7 +12,7 @@ This container might be used to bring up Zookeeper standalone cluster. Container
 ## Configuration (environment variables)
 
 |Variable|Description|Default|
-|-|
+|---|---|---|
 |**SERF_JOINTO**|Specifies the host address when starting the second and the following zookeeper instances.||
 |ENSEMBLE_SCALE_TIMEOUT|Ensemble scale up timeout. Specifies deadline for all ensemble members to go online.|`300` sec|
 |ZK_ENSEMBLE_SIZE|Required number of Zookeeper instances which form quorum.|`3`|
