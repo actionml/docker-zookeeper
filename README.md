@@ -1,3 +1,4 @@
+[![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/dennybaa/zookeeper) [![Build Status](https://travis-ci.org/dennybaa/docker-zookeeper.svg?branch=master)](https://travis-ci.org/dennybaa/docker-zookeeper)
 # Docker zookeeper container (standalone)
 
 This container might be used to bring up Zookeeper standalone cluster. Container has complicated configuration generation using confd and serf. Serf is used to solve zookeeper's lack of dynamic configuration (as of **3.4.8** version), this means that ensemble members should be known before start up which causes chicken-egg problem for a docker environment.
