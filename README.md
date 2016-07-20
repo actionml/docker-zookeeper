@@ -26,15 +26,17 @@ This container might be used to bring up Zookeeper standalone cluster. Container
 
 ```
 # Start containers interactively (from different consoles).
-docker run -it --rm --name zookeeper-a actionml/zookeeper
+docker run -d --name zookeeper-a actionml/zookeeper
+# wait for start (follow logs and ^C)
+docker logs -f zookeeper-a
 
 # Grab ip address of an instance to join to (Serf join).
-# Start 2nd and 3d zookeeper instances
 zk_ip=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' zookeeper-a)
-docker run -it --rm -e SERF_JOINTO=$zk_ip actionml/zookeeper
 
-zk_ip=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' zookeeper-a)
-docker run -it --rm -e SERF_JOINTO=$zk_ip actionml/zookeeper
+# Start as many instances as required, by default you have to have 3, so +2.
+
+docker run -d -e SERF_JOINTO=$zk_ip actionml/zookeeper
+docker run -d -e SERF_JOINTO=$zk_ip actionml/zookeeper
 ```
 
 As soon as the ensemble converges the quorum will be printed out bellow `==> Zookeeper quorum:`, it can be pasted somewhere into another configuration (for example HBase).
