@@ -8,9 +8,12 @@ export ZK_MAX_CLIENT_CXNS=${ZK_MAX_CLIENT_CXNS:-60}
 export ENSEMBLE_SCALE_TIMEOUT=${ENSEMBLE_SCALE_TIMEOUT:-300}
 export ZK_IFACE=${ZK_IFACE:-eth0}
 
+# Do not break command override
+[ -z "$1"  ] || exec "$@"
+
 # Wait for all zookeeper nodes to be scheduled
 export SERF_JOINTO
 /wait-for-ensemble.sh
 
-# Start zookeeper
+# Start zookeeper or cmd
 exec /opt/zookeeper/bin/zkServer.sh start-foreground
