@@ -1,4 +1,4 @@
-[![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/dennybaa/zookeeper) [![Build Status](https://travis-ci.org/dennybaa/docker-zookeeper.svg?branch=master)](https://travis-ci.org/dennybaa/docker-zookeeper)
+[![DockerHub](https://img.shields.io/badge/docker-available-blue.svg)](https://hub.docker.com/r/actionml/zookeeper) [![Build Status](https://travis-ci.org/actionml/docker-zookeeper.svg?branch=master)](https://travis-ci.org/actionml/docker-zookeeper)
 # Docker zookeeper container (standalone)
 
 This container might be used to bring up Zookeeper standalone cluster. Container has complicated configuration generation using confd and serf. Serf is used to solve zookeeper's lack of dynamic configuration (as of **3.4.8** version), this means that ensemble members should be known before start up which causes chicken-egg problem for a docker environment.
@@ -26,15 +26,15 @@ This container might be used to bring up Zookeeper standalone cluster. Container
 
 ```
 # Start containers interactively (from different consoles).
-docker run -it --rm --name zookeeper-a dennybaa/zookeeper
+docker run -it --rm --name zookeeper-a actionml/zookeeper
 
 # Grab ip address of an instance to join to (Serf join).
 # Start 2nd and 3d zookeeper instances
 zk_ip=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' zookeeper-a)
-docker run -it --rm -e SERF_JOINTO=$zk_ip dennybaa/zookeeper
+docker run -it --rm -e SERF_JOINTO=$zk_ip actionml/zookeeper
 
 zk_ip=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' zookeeper-a)
-docker run -it --rm -e SERF_JOINTO=$zk_ip dennybaa/zookeeper
+docker run -it --rm -e SERF_JOINTO=$zk_ip actionml/zookeeper
 ```
 
 As soon as the ensemble converges the quorum will be printed out bellow `==> Zookeeper quorum:`, it can be pasted somewhere into another configuration (for example HBase).

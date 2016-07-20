@@ -1,11 +1,12 @@
-FROM alpine
+FROM java:8-jre-alpine
+
 ENV ZK_VERSION 3.4.8
 ENV ZK_IFACE eth0
+LABEL vendor=ActionML \
+      version_tags="[\"3.4\",\"3.4.8\"]"
 
-RUN \
-  apk update && \
-  apk add --update bash curl openjdk8-jre && \
-  rm -rf /var/cache/apk/*
+# Update alpine and install required tools
+RUN apk update && apk add --update bash curl
 
 RUN curl -L https://github.com/kelseyhightower/confd/releases/download/v0.12.0-alpha3/confd-0.12.0-alpha3-linux-amd64 -o /usr/local/bin/confd && \
     chmod +x /usr/local/bin/confd && \
