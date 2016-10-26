@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # Serf agent startup string
 SERF_AGENT="serf agent -tag role=zookeeper -event-handler=query:ipaddr=/ipaddr.sh"
@@ -21,7 +21,7 @@ timeout_on() {
 ## Check ensemble members number
 ensemble_scale_complete() {
   acks=$(serf query dummy | grep "Total Acks" | sed 's/.*: //')
-  [ $acks -eq $ZK_ENSEMBLE_SIZE ] || return $?
+  [ "$acks" = "$ZK_ENSEMBLE_SIZE" ] || return $?
 }
 
 
@@ -43,7 +43,7 @@ while : ; do
 done
 
 ## 3. Get a space separated of list of ensemble member ip addresses
-members=$(serf query ipaddr $ZK_IFACE | grep 'Response from' | sed -r 's/.*: //' | sort)
+members=$(serf query ipaddr $ZK_ADDRNUM | grep 'Response from' | sed -r 's/.*: //' | sort)
 ZK_ENSEMBLE_HOSTS=$(echo $members | sed 's/ /,/g')
 echo -e "==> Zookeeper quorum:\n    $ZK_ENSEMBLE_HOSTS"
 

@@ -1,7 +1,9 @@
 FROM java:8-jre-alpine
 
 ENV ZK_VERSION 3.4.8
-ENV ZK_IFACE eth0
+# ZK_ADDRNUM is interface number 1 for first (which can be eth0)
+ENV ZK_ADDRNUM 1
+
 LABEL vendor=ActionML \
       version_tags="[\"3.4\",\"3.4.8\"]"
 

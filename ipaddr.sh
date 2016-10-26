@@ -1,6 +1,5 @@
 #!/bin/sh -e
-# Grab inet address on the given interface, Serf query payload passed as STDIN
+# Display ip address of the given number (default: 1), Serf query payload passed as STDIN
 
-read dev
-addr=$(ip a show dev $dev | grep 'inet ' | tr -s '[:space:]' | cut -f3 -d' ')
-echo ${addr%/*}
+read addrnum
+hostnames -I | cut -f${addrnum} -d' '

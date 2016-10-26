@@ -16,7 +16,7 @@ This container might be used to bring up Zookeeper standalone cluster. Container
 |**SERF_JOINTO**|Specifies the host address when starting the second and the following zookeeper instances.||
 |ENSEMBLE_SCALE_TIMEOUT|Ensemble scale up timeout. Specifies deadline for all ensemble members to go online.|`300` sec|
 |ZK_ENSEMBLE_SIZE|Required number of Zookeeper instances which form quorum.|`3`|
-|ZK_IFACE|Specifies interface of a container where Zookeeper's address will be fetched from.|`eth0`|
+|ZK_ADDRNUM|Specifies ip address number which Zookeeper will be using, by default the first interface.|`1`|
 |ZK_TICK_TIME|Sets *tickTime*.|`2000` ms|
 |ZK_INIT_LIMIT|Sets *initLimit*.|`10` ticks|
 |ZK_SYNC_LIMIT|Sets *syncLimit*.|`5` ticks|
