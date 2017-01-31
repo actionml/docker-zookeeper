@@ -34,7 +34,7 @@ ensemble_scale_complete() {
 ## ------------------------------------------------------------------
 
 ## 1. Start serf in the background
-advaddr=$(ip address | grep 'inet\s' | grep -v '\blo\b' | sed -n 's/.*inet \(.*\)\/.*/\1/;p')
+advaddr=$(ip address | grep 'inet\s' | grep -v '\blo\b' | sed -n 's/.*inet \(.*\)\/.*/\1/;p' | sed ${ZK_ADDRNUM}'!d')
 ${SERF_AGENT} -advertise $advaddr &
 
 # Set to time out at `now + timeout`

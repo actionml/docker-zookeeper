@@ -6,4 +6,4 @@ ip_addresses() {
 }
 
 read addrnum
-ip_addresses | sed "${addrnum}!d"
+ip_addresses | sed ${addrnum}'!d'
