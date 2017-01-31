@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  zookeeper-a:
+    image: actionml/zookeeper
+
+  zookeeper-b:
+    image: actionml/zookeeper
+    environment:
+      - SERF_JOINTO=zookeeper-a
+
+  zookeeper-c:
+    image: actionml/zookeeper
+    environment:
+      - SERF_JOINTO=zookeeper-a
+
+networks:
+  default:
+    external:
+      name: actionml

@@ -6,7 +6,7 @@ export ZK_INIT_LIMIT=${ZK_INIT_LIMIT:-10}
 export ZK_SYNC_LIMIT=${ZK_SYNC_LIMIT:-5}
 export ZK_MAX_CLIENT_CXNS=${ZK_MAX_CLIENT_CXNS:-60}
 export ENSEMBLE_SCALE_TIMEOUT=${ENSEMBLE_SCALE_TIMEOUT:-300}
-export ZK_ADDRNUM=${ZK_ADDRNUM:-eth0}
+export ZK_ADDRNUM=${ZK_ADDRNUM:-1}
 
 # Do not break command override
 [ -z "$1"  ] || exec "$@"
