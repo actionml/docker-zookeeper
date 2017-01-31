@@ -34,7 +34,8 @@ ensemble_scale_complete() {
 ## ------------------------------------------------------------------
 
 ## 1. Start serf in the background
-${SERF_AGENT} &
+advaddr=$(ip address | grep 'inet\s' | grep -v '\blo\b' | sed -n 's/.*inet \(.*\)\/.*/\1/;p')
+${SERF_AGENT} -advertise $advaddr &
 
 # Set to time out at `now + timeout`
 echo -e "Waiting for all members of ensemble to scale up, can take up to ${ENSEMBLE_SCALE_TIMEOUT} seconds...\n"
