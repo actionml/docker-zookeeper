@@ -2,9 +2,15 @@
 
 # Serf agent startup string
 SERF_AGENT="serf agent -tag role=zookeeper -event-handler=query:ipaddr=/ipaddr.sh"
+
 # Set join address (in case the second and the following agents are started)
 if [ ! -z "${SERF_JOINTO}" ]; then
   SERF_AGENT="${SERF_AGENT} -join=${SERF_JOINTO}"
+fi
+
+# Set serf node name
+if [ ! -z "${SERF_NODE}" ]; then
+  SERF_AGENT="${SERF_AGENT} -node=${SERF_NODE}"
 fi
 
 

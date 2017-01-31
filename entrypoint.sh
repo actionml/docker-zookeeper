@@ -13,6 +13,7 @@ export ZK_ADDRNUM=${ZK_ADDRNUM:-1}
 
 # Wait for all zookeeper nodes to be scheduled
 export SERF_JOINTO
+export SERF_NODE
 /wait-for-ensemble.sh
 
 # Start zookeeper or cmd
